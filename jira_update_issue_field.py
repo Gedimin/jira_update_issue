@@ -1,9 +1,11 @@
 import os
+import time
 from jira import JIRA
 from datetime import datetime
 from getpass import getpass
 from dotenv import load_dotenv
 
+start_time = time.time()
 load_dotenv()
 
 jira_server = os.environ['jira_server']
@@ -25,7 +27,7 @@ issues_in_proj = jira.search_issues(search_string, maxResults=max_results)
 if len(issues_in_proj) == 0:
     print('Issues not found')
 else:
-    print(f'INFO - Search returns first {max_results} results. You can increase it by changing value of \"max_results\" variable.')
+    print(f'INFO - Search returns up to first {max_results} results. You can increase it by changing value of \"max_results\" variable.')
     print(f'Found {len(issues_in_proj)} issues. Updating...')
     for issue in issues_in_proj:
         orig_value_date_depl = issue.fields.customfield_27700
@@ -37,3 +39,6 @@ else:
         # upgrading {field_to_search} field and print
         print(f'{issue.key}: {issue.fields.summary}, {field_to_search}: {orig_value_date_depl} -> {updated_date_depl}')
         issue.update(fields={'customfield_27700': updated_date_depl})
+
+end_time = time.time()
+print(f'Time spent: {end_time - start_time:.2f} sec')
