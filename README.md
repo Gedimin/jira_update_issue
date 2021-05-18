@@ -1,5 +1,23 @@
 # jira_update_issue
 Script to update jira issue
 
+# Dependencies:
+Modules `jira` and `python-dotenv` must be instaled manually before script jusage or use `pipenv`
+
 # Usage
-Create .env file with variables mentioned in script and run the script
+Create .env file with variables mentioned in script:
+```bash
+cat << EOF > .env
+jira_server=https://jira_uri
+jira_user=username
+project_code=PROJECT_CODE
+created_after=2021-01-01
+max_search_results=10
+assignee_person=User_JIRA
+field_to_search='Custom_Field'
+status_issue=("Solved", Closed)
+EOF
+```
+
+And run the script:
+`pipenv run python jira_update_issue_field.py`
