@@ -2,7 +2,10 @@
 Script to update jira issue
 
 # Dependencies:
-Modules `jira` and `python-dotenv` must be instaled manually before script jusage or use `pipenv`
+Modules `jira` and `python-dotenv` will be instaled.
+```bash
+pipenv sync
+```
 
 # Usage
 Create .env file with variables mentioned in script:
@@ -19,5 +22,7 @@ status_issue=("Solved", Closed)
 EOF
 ```
 
-And run the script:
-`pipenv run python jira_update_issue_field.py`
+Then just run:
+```bash
+pipenv run python jira_update_issue_field.py
+```
