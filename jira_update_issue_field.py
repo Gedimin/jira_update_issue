@@ -5,7 +5,6 @@ from datetime import datetime
 from getpass import getpass
 from dotenv import load_dotenv
 
-start_time = time.time()
 load_dotenv()
 
 jira_server = os.environ['jira_server']
@@ -16,10 +15,12 @@ max_results = os.environ['max_search_results']
 assignee_person = os.environ['assignee_person']
 field_to_search = os.environ['field_to_search']
 status_issue = os.environ['status_issue']
+jira_password = getpass(prompt='Password: ', stream=None)
+
+start_time = time.time()
 
 search_string = f'project in ({project_code}) AND created >= {created_after} AND status in {status_issue} AND assignee in ({assignee_person}) AND "{field_to_search}" is EMPTY order by created DESC'
 
-jira_password = getpass(prompt='Password: ', stream=None)
 jira_server = {'server': jira_server}
 jira = JIRA(basic_auth=(jira_user, jira_password), options=jira_server)
 issues_to_process = jira.search_issues(search_string, maxResults=max_results)
