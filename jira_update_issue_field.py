@@ -22,14 +22,14 @@ search_string = f'project in ({project_code}) AND created >= {created_after} AND
 jira_password = getpass(prompt='Password: ', stream=None)
 jira_server = {'server': jira_server}
 jira = JIRA(basic_auth=(jira_user, jira_password), options=jira_server)
-issues_in_proj = jira.search_issues(search_string, maxResults=max_results)
+issues_to_process = jira.search_issues(search_string, maxResults=max_results)
 
-if len(issues_in_proj) == 0:
+if len(issues_to_process) == 0:
     print('Issues not found')
 else:
     print(f'INFO - Search returns up to first {max_results} results. You can increase it by changing value of \"max_results\" variable.')
-    print(f'Found {len(issues_in_proj)} issues. Updating...')
-    for issue in issues_in_proj:
+    print(f'Found {len(issues_to_process)} issues. Updating...')
+    for issue in issues_to_process:
         orig_value_date_depl = issue.fields.customfield_27700
 
         # getting date and update {field_to_search} field
