@@ -15,7 +15,8 @@ max_results = os.environ['max_search_results']
 assignee_person = os.environ['assignee_person']
 field_to_search = os.environ['field_to_search']
 status_issue = os.environ['status_issue']
-jira_password = getpass(prompt='Password: ', stream=None)
+
+jira_password = os.environ['JIRA_PASSWORD'] if "JIRA_PASSWORD" in os.environ else getpass(prompt='Password: ', stream=None)
 
 start_time = time.time()
 
