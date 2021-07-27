@@ -1,14 +1,10 @@
 # jira_update_issue
 Script to update jira issue
 
-To avoid error `ModuleNotFoundError No module named pipenv.vendor.vistir`:
-```bash
-pip install "pipenv==2018.11.26"
-```
 # Dependencies:
 Modules `jira` and `python-dotenv` will be instaled.
 ```bash
-pipenv install
+poetry install
 ```
 
 # Usage
@@ -28,5 +24,5 @@ EOF
 
 Then just run:
 ```bash
-pipenv run python jira_update_issue_field.py
+poetry run python jira_update_issue_field.py
 ```

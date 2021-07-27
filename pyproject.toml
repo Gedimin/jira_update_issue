@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "jira-update-issue"
+version = "0.1.0"
+description = "Updates JIRA issues"
+authors = ["Aliaksei Anikiyenka <aliaksei_anikiyenka@epam.com>"]
+readme = "README.md"
+packages = [{include = "jira_update_issue"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+jira = "^3.0.1"
+python-dotenv = "^0.19.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
