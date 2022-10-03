@@ -16,14 +16,14 @@ assignee_person = os.environ['assignee_person']
 field_to_search = os.environ['field_to_search']
 status_issue = os.environ['status_issue']
 
-jira_password = os.environ['JIRA_PASSWORD'] if "JIRA_PASSWORD" in os.environ else getpass(prompt='Password: ', stream=None)
+jira_token = os.environ['JIRA_PAT'] if "JIRA_PAT" in os.environ else getpass(prompt='Enter Personal Access Token: ', stream=None)
 
 start_time = time.time()
 
 search_string = f'project in ({project_code}) AND created >= {created_after} AND status in {status_issue} AND assignee in ({assignee_person}) AND "{field_to_search}" is EMPTY order by created DESC'
 
 jira_server = {'server': jira_server}
-jira = JIRA(basic_auth=(jira_user, jira_password), options=jira_server)
+jira = JIRA(token_auth=jira_token, server=jira_server)
 issues_to_process = jira.search_issues(search_string, maxResults=max_results)
 
 if len(issues_to_process) == 0:
