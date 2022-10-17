@@ -11,7 +11,6 @@ python = "^3.10"
 jira = "^3.4.1"
 python-dotenv = "^0.21.0"
 
-[tool.poetry.dev-dependencies]
 
 [build-system]
 requires = ["poetry-core"]
