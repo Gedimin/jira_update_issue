@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "jira_update_issue"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 jira = "^3.4.1"
 python-dotenv = "^0.21.0"
 
